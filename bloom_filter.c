@@ -29,7 +29,7 @@ typedef struct bloom_filter_object {
 static inline bloom_filter_object *bloom_filter_from_object(zend_object *obj)
 {
 	/* std is embedded at the end of bloom_filter_object, so subtract its offset. */
-	return (bloom_filter_object *) ((char *) obj - XtOffsetOf(bloom_filter_object, std));
+	return (bloom_filter_object *) ((char *) obj - offsetof(bloom_filter_object, std));
 }
 
 static zend_object *bloom_filter_create_object(zend_class_entry *ce)
@@ -65,7 +65,7 @@ void php_bloom_filter_register_handlers(zend_class_entry *ce)
 
 	/* Start from Zend's standard handlers and override only object lifecycle hooks. */
 	memcpy(&bloom_filter_handlers, zend_get_std_object_handlers(), sizeof(zend_object_handlers));
-	bloom_filter_handlers.offset = XtOffsetOf(bloom_filter_object, std);
+	bloom_filter_handlers.offset = offsetof(bloom_filter_object, std);
 	bloom_filter_handlers.free_obj = bloom_filter_free_object;
 	bloom_filter_handlers.clone_obj = NULL;
 }

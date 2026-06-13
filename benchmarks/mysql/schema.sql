@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS suppressions (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    email_hash VARBINARY(32) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    UNIQUE KEY uniq_suppressions_email_hash (email_hash)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

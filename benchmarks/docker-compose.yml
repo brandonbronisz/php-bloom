@@ -1,0 +1,23 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: php-bloom-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: php_bloom_bench
+      MYSQL_USER: bloom
+      MYSQL_PASSWORD: bloom
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "127.0.0.1:${MYSQL_PORT:-3306}:3306"
+    volumes:
+      - php_bloom_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$${MYSQL_ROOT_PASSWORD} --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+volumes:
+  php_bloom_mysql_data:

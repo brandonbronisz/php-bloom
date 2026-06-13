@@ -1,0 +1,18 @@
+{
+  "name": "brandonbronisz/php-bloom",
+  "type": "php-ext",
+  "description": "Bloom filter extension for PHP",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.0 <9.0"
+  },
+  "php-ext": {
+    "extension-name": "bloom",
+    "configure-options": [
+      {
+        "name": "enable-bloom",
+        "description": "Enable bloom support"
+      }
+    ]
+  }
+}

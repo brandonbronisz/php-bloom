@@ -1,0 +1,60 @@
+# Local editor and OS metadata
+.DS_Store
+.idea/
+.vscode/
+
+# PHP extension build outputs
+Makefile
+Makefile.fragments
+Makefile.objects
+acinclude.m4
+aclocal.m4
+autom4te.cache/
+build/
+config.h
+config.h.in
+config.h.in~
+config.log
+config.nice
+config.status
+configure
+configure~
+configure.ac
+include/
+libtool
+libs/
+modules/
+run-tests.php
+tmp-php.ini
+
+# Compiler and libtool artifacts
+.deps/
+.libs/
+*.a
+*.dep
+*.dSYM/
+*.gcda
+*.gcno
+*.la
+*.lo
+*.o
+*.so
+
+# PHPT generated files
+tests/*.clean.php
+tests/*.diff
+tests/*.exp
+tests/*.log
+tests/*.mem
+tests/*.out
+tests/*.php
+tests/*.sh
+
+# CMake build outputs
+CMakeCache.txt
+CMakeFiles/
+cmake-build-*/
+cmake_install.cmake
+compile_commands.json
+build.ninja
+Testing/

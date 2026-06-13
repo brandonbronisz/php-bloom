@@ -1,5 +1,7 @@
 # php-bloom
 
+[![Build and Test](https://github.com/brandonbronisz/php-bloom/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/brandonbronisz/php-bloom/actions/workflows/build-and-test.yml)
+
 `php-bloom` is a native PHP 8 extension that provides a compact Bloom filter
 implementation for fast probabilistic membership checks.
 

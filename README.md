@@ -36,6 +36,16 @@ Verify the extension is loaded:
 php -r 'var_dump(extension_loaded("bloom"), bloom_version());'
 ```
 
+## IDE Stubs
+
+Install the optional stubs package in projects that use php-bloom to get IDE
+completion, parameter hints, return types, and inline docs without requiring the
+extension to be loaded in the IDE environment:
+
+```sh
+composer require --dev brandonbronisz/php-bloom-stubs
+```
+
 ## Build
 
 ```sh

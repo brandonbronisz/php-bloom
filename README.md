@@ -13,10 +13,28 @@ authoritative store when false positives matter.
 ## Requirements
 
 - PHP `>=8.0 <9.0`
+- PIE, for package-based installation
 - Unix-like builds: `phpize`, `php-config`, a C compiler, and `make`
 - Windows builds: PHP SDK tooling through `php/php-windows-builder` or an
   equivalent PHP Windows build environment
 - Docker, only for the MySQL benchmark
+
+## Install With PIE
+
+```sh
+pie install brandonbronisz/php-bloom
+```
+
+PIE builds and enables the extension for the target PHP installation. On
+Unix-like systems, make sure the PHP development tools and compiler toolchain
+are installed first. On Windows, PIE installs from the pre-built DLL archives
+published on GitHub releases.
+
+Verify the extension is loaded:
+
+```sh
+php -r 'var_dump(extension_loaded("bloom"), bloom_version());'
+```
 
 ## Build
 

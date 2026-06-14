@@ -55,14 +55,14 @@ PHP_FUNCTION(bloom_optimal_bits)
 		RETURN_THROWS();
 	}
 
-	if (!isfinite(false_positive_rate) || false_positive_rate <= 0.0 || false_positive_rate >= 1.0) {
+	if (!zend_finite(false_positive_rate) || false_positive_rate <= 0.0 || false_positive_rate >= 1.0) {
 		zend_value_error("falsePositiveRate must be greater than 0 and less than 1");
 		RETURN_THROWS();
 	}
 
 	bits = -((double) capacity * log(false_positive_rate)) / (log(2.0) * log(2.0));
 
-	if (!isfinite(bits) || bits > (double) ZEND_LONG_MAX) {
+	if (!zend_finite(bits) || bits > (double) ZEND_LONG_MAX) {
 		zend_value_error("calculated bit size is too large");
 		RETURN_THROWS();
 	}
@@ -93,7 +93,7 @@ PHP_FUNCTION(bloom_optimal_hashes)
 
 	hashes = ((double) bits / (double) capacity) * log(2.0);
 
-	if (!isfinite(hashes) || hashes > (double) ZEND_LONG_MAX) {
+	if (!zend_finite(hashes) || hashes > (double) ZEND_LONG_MAX) {
 		zend_value_error("calculated hash count is too large");
 		RETURN_THROWS();
 	}

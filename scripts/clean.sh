@@ -43,11 +43,18 @@ remove_find_matches() {
             \( -type f \( \
                 -name "*.a" -o \
                 -name "*.dep" -o \
+                -name "*.dll" -o \
+                -name "*.exp" -o \
                 -name "*.gcda" -o \
                 -name "*.gcno" -o \
+                -name "*.ilk" -o \
                 -name "*.la" -o \
+                -name "*.lib" -o \
                 -name "*.lo" -o \
                 -name "*.o" -o \
+                -name "*.obj" -o \
+                -name "*.pdb" -o \
+                -name "*.res" -o \
                 -name "*.so" \
             \) -print0 \)
     )

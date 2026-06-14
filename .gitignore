@@ -32,12 +32,19 @@ tmp-php.ini
 .libs/
 *.a
 *.dep
+*.dll
 *.dSYM/
+*.exp
 *.gcda
 *.gcno
+*.ilk
 *.la
+*.lib
 *.lo
 *.o
+*.obj
+*.pdb
+*.res
 *.so
 
 # PHPT generated files

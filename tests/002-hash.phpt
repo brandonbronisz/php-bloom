@@ -6,10 +6,24 @@ bloom_hash is deterministic and handles binary strings
 <?php
 require __DIR__ . '/helpers.inc';
 
-bloom_test_assert_same(3414781078840391647, bloom_hash(''), 'empty string hash');
-bloom_test_assert_same(4282283387467632165, bloom_hash('hello'), 'hello hash');
-bloom_test_assert_same(7374513309044294956, bloom_hash('hello', 1), 'seeded hello hash');
-bloom_test_assert_same(900508179546357362, bloom_hash("abc\0def"), 'binary string hash');
+$expectedHashes = PHP_INT_SIZE >= 8
+	? [
+		'empty' => 3414781078840391647,
+		'hello' => 4282283387467632165,
+		'seeded_hello' => 7374513309044294956,
+		'binary' => 900508179546357362,
+	]
+	: [
+		'empty' => 100775903,
+		'hello' => 1771081253,
+		'seeded_hello' => 1626981676,
+		'binary' => 254918258,
+	];
+
+bloom_test_assert_same($expectedHashes['empty'], bloom_hash(''), 'empty string hash');
+bloom_test_assert_same($expectedHashes['hello'], bloom_hash('hello'), 'hello hash');
+bloom_test_assert_same($expectedHashes['seeded_hello'], bloom_hash('hello', 1), 'seeded hello hash');
+bloom_test_assert_same($expectedHashes['binary'], bloom_hash("abc\0def"), 'binary string hash');
 
 bloom_test_assert_same(bloom_hash('hello'), bloom_hash('hello'), 'hash is deterministic');
 bloom_test_assert_true(bloom_hash('hello') !== bloom_hash('hello', 1), 'seed changes hash');

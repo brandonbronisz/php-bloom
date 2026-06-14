@@ -3,6 +3,7 @@
 #endif
 
 #include <math.h>
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
 
@@ -191,14 +192,14 @@ PHP_METHOD(Bloom_Filter, __construct)
 		RETURN_THROWS();
 	}
 
-	if (!isfinite(false_positive_rate) || false_positive_rate <= 0.0 || false_positive_rate >= 1.0) {
+	if (!zend_finite(false_positive_rate) || false_positive_rate <= 0.0 || false_positive_rate >= 1.0) {
 		zend_value_error("falsePositiveRate must be greater than 0 and less than 1");
 		RETURN_THROWS();
 	}
 
 	bits_double = -((double) capacity * log(false_positive_rate)) / (log(2.0) * log(2.0));
 
-	if (!isfinite(bits_double) || bits_double > (double) ZEND_LONG_MAX) {
+	if (!zend_finite(bits_double) || bits_double > (double) ZEND_LONG_MAX) {
 		zend_value_error("calculated bit size is too large");
 		RETURN_THROWS();
 	}

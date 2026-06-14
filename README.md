@@ -13,14 +13,12 @@ authoritative store when false positives matter.
 ## Requirements
 
 - PHP `>=8.0 <9.0`
-- `phpize`
-- `php-config`
-- C compiler and `make`
+- Unix-like builds: `phpize`, `php-config`, a C compiler, and `make`
+- Windows builds: PHP SDK tooling through `php/php-windows-builder` or an
+  equivalent PHP Windows build environment
 - Docker, only for the MySQL benchmark
 
 ## Build
-
-Build the extension:
 
 ```sh
 scripts/build.sh
@@ -36,6 +34,13 @@ Run the PHPT suite:
 
 ```sh
 scripts/test.sh
+```
+
+Build and test the extension on Windows:
+
+```powershell
+Install-Module -Name BuildPhpExtension -Repository PSGallery -Force -Scope CurrentUser
+Invoke-PhpBuildExtension -PhpVersion 8.4 -Arch x64 -Ts nts -Args "--enable-bloom"
 ```
 
 ## Quick Start

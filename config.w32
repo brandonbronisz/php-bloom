@@ -1,0 +1,8 @@
+// vim:ft=javascript
+
+ARG_ENABLE("bloom", "Bloom filter support", "no");
+
+if (PHP_BLOOM != "no") {
+	EXTENSION("bloom", "bloom.c bloom_algo.c bloom_filter.c");
+	AC_DEFINE("HAVE_BLOOM", 1, "Define to 1 if the PHP extension 'bloom' is available.");
+}

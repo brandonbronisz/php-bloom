@@ -1,7 +1,7 @@
 PHP_ARG_ENABLE([bloom],
 	[whether to enable bloom support],
 	[AS_HELP_STRING([--enable-bloom], [Enable bloom support])],
-	[no])
+	[yes])
 
 if test "$PHP_BLOOM" != "no"; then
 	AC_DEFINE([HAVE_BLOOM], [1], [Define to 1 if the PHP extension 'bloom' is available.])

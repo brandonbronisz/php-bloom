@@ -6,7 +6,7 @@ bloom exposes the expected API surface
 <?php
 require __DIR__ . '/helpers.inc';
 
-bloom_test_assert_same('0.1.0', bloom_version(), 'extension version');
+bloom_test_assert_same('0.1.1', bloom_version(), 'extension version');
 
 foreach ([
 	'bloom_version',
